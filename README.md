@@ -1,6 +1,7 @@
 1. Clone dotfiles
 
 git clone git@github.com:inkedqt/inksec-dotfiles.git ~/INKSEC.IO/inksec-dotfiles cd ~/INKSEC.IO/inksec-dotfiles/kali
+
 2. Install packages + OMZ + plugins
 
 ./install.sh
