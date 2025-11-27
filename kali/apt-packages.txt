@@ -1,0 +1,55 @@
+# Core tools
+zsh
+zsh-syntax-highlighting
+eza
+grc
+colorize
+bat
+fastfetch
+kitty
+
+# Pentesting essentials
+seclists
+curl
+dnsrecon
+enum4linux
+feroxbuster
+gobuster
+nbtscan
+nikto
+onesixtyone
+oscanner
+redis-tools
+smbclient
+smbmap
+snmp
+sslscan
+sipvicious
+tnscmd10g
+whatweb
+nmap
+
+# AD / Windows tooling
+krb5-user
+libkrb5-dev
+windapsearch
+impacket-scripts
+petitpotam
+haiti
+xfreerdp
+freerdp2-x11
+
+# Development & deps
+python3-venv
+pipx
+build-essential
+cmake
+git
+jq
+terraform
+
+# System / GUI stuff (because you used them)
+open-vm-tools
+open-vm-tools-desktop
+gedit
+p7zip-full
