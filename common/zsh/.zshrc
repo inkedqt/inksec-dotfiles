@@ -32,8 +32,8 @@ HISTDIR="$HOME/.config/zsh"
 mkdir -p "$HISTDIR"
 
 HISTFILE="$HISTDIR/history"
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=500000
+SAVEHIST=500000
 
 setopt APPEND_HISTORY          # append, don't overwrite
 setopt SHARE_HISTORY           # merge across sessions
@@ -119,6 +119,42 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 bindkey '^I' expand-or-complete
 
 # (arrow keys for substring search already configured above)
+# ============================
+# InkSec – FZF integration
+# ============================
+
+# Prefer fd/fdfind as the file walker for FZF
+if command -v fd >/dev/null 2>&1; then
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+  export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+elif command -v fdfind >/dev/null 2>&1; then
+  export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --follow --exclude .git'
+  export FZF_ALT_C_COMMAND='fdfind --type d --hidden --follow --exclude .git'
+fi
+
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Try to source system fzf keybindings/completions
+for fzf_bind in \
+  /usr/share/fzf/key-bindings.zsh \
+  /usr/share/fzf/shell/key-bindings.zsh \
+  /usr/share/doc/fzf/examples/key-bindings.zsh
+do
+  [ -r "$fzf_bind" ] && source "$fzf_bind" && break
+done
+
+for fzf_comp in \
+  /usr/share/fzf/completion.zsh \
+  /usr/share/fzf/shell/completion.zsh \
+  /usr/share/doc/fzf/examples/completion.zsh
+do
+  [ -r "$fzf_comp" ] && source "$fzf_comp" && break
+done
+# FZF history search on Alt+I
+if typeset -f fzf-history-widget >/dev/null 2>&1; then
+  bindkey -M emacs '\ei' fzf-history-widget
+fi
+
 # ============================
 # InkSec Prompt
 # ============================

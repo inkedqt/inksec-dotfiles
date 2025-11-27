@@ -7,6 +7,8 @@ colorize
 bat
 fastfetch
 kitty
+fzf
+fd-find
 
 # Pentesting essentials
 seclists
