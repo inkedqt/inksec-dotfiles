@@ -30,6 +30,30 @@ clone_if_missing "https://github.com/ticarpi/jwt_tool" "jwt_tool"
 clone_if_missing "https://github.com/dirkjanm/krbrelayx" "krbrelayx"
 clone_if_missing "https://github.com/ozelis/winrmexec.git" "winrmexec"
 clone_if_missing "https://github.com/markti/certreq" "certreq"
+clone_if_missing "https://github.com/ropnop/windapsearch.git" "windapsearch"
+clone_if_missing "https://github.com/topotam/PetitPotam.git" "PetitPotam"
+# If you want kerbrute from source too:
+clone_if_missing "https://github.com/ropnop/kerbrute.git" "kerbrute"
+
+# -------------------------------------------------------
+# Wrappers into ~/tools/bin
+# -------------------------------------------------------
+
+# AD username generator
+make_wrapper "adgen" "python3 \"$TOOLS/AD-Username-Generator/username-generate.py\""
+
+# windapsearch (Python)
+make_wrapper "windapsearch" "python3 \"$TOOLS/windapsearch/windapsearch.py\""
+
+# krbrelayx
+make_wrapper "krbrelayx.py" "python3 \"$TOOLS/krbrelayx/krbrelayx.py\""
+
+# PetitPotam
+make_wrapper "PetitPotam.py" "python3 \"$TOOLS/PetitPotam/PetitPotam.py\""
+
+# kerbrute (assuming you drop the prebuilt binary in that repo dir)
+# or build it once and leave it as kerbrute_linux_amd64
+make_wrapper "kerbrute" "\"$TOOLS/kerbrute/kerbrute_linux_amd64\""
 
 # -------------------------------------------------------
 # Cheatsheet: revshells

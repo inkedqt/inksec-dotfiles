@@ -19,7 +19,22 @@ step() {
 step "Installing APT packages"
 sudo apt update -y
 sudo apt install -y $(grep -vE '^#' apt-packages.txt | tr '\n' ' ')
+# -------------------------------------------------------
+# Step X: Enable Docker + add user to docker group
+# -------------------------------------------------------
+step "Configuring Docker"
 
+if command -v docker >/dev/null 2>&1; then
+    echo "  - Enabling and starting Docker service"
+    sudo systemctl enable --now docker || true
+
+    echo "  - Adding user $USER to docker group"
+    sudo usermod -aG docker "$USER" || true
+
+    echo "  - NOTE: You must log out and log back in for docker group to apply."
+else
+    echo "  - Docker not installed? Check apt-packages.txt"
+fi
 # -------------------------------------------------------
 # Step 2: Install pipx packages
 # -------------------------------------------------------

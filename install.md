@@ -1,16 +1,12 @@
 # 1. Clone dotfiles
 git clone git@github.com:inkedqt/inksec-dotfiles.git ~/INKSEC.IO/inksec-dotfiles
-cd ~/INKSEC.IO/inksec-dotfiles/kali
 
-# 2. Install packages + OMZ + plugins
-./install.sh
+# InkSec Kali Post-Install
+1. Run ./install.sh
+2. Run ./tools.sh
+3. Run ./link.sh
+4. sudo systemctl enable --now docker
+5. sudo usermod -aG docker $USER
+6. Log out/in
 
-# 3. Setup tools + cheats + BloodHound helper
-./tools.sh
-
-# 4. Link configs
-cd ../scripts
-./link.sh
-
-# 5. Make zsh your default shell (once per machine)
 chsh -s $(which zsh)

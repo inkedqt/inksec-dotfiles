@@ -3,8 +3,12 @@ set -e
 
 echo "[ InkSec Kali Setup ] Linking dotfiles..."
 
-DOTROOT="$HOME/INKSEC.IO/inksec-dotfiles"
+# Figure out where this script lives, then go up one level to repo root
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" && pwd)"
+DOTROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 COMMON="$DOTROOT/common"
+
+echo "  - Detected dotfiles root: $DOTROOT"
 
 # ZSH
 echo "  - Linking .zshrc"

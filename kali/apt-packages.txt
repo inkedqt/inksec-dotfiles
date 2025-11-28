@@ -9,6 +9,8 @@ fastfetch
 kitty
 fzf
 fd-find
+docker.io 
+docker-compose
 
 # Pentesting essentials
 seclists
