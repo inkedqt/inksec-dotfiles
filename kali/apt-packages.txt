@@ -34,12 +34,12 @@ nmap
 # AD / Windows tooling
 krb5-user
 libkrb5-dev
-windapsearch
+#windapsearch
 impacket-scripts
-petitpotam
-haiti
-xfreerdp
-freerdp2-x11
+#petitpotam
+#haiti
+#xfreerdp
+#freerdp2-x11
 
 # Development & deps
 python3-venv
